@@ -42,6 +42,8 @@ const initialTasks = [
 ];
 
 const todoContainer = document.getElementById("todo-list");
+const doingContainer = document.getElementById("doing-list");
+const doneContainer = document.getElementById("done-list");
 
 function displayTasks() {
   initialTasks.forEach((task) => {
@@ -51,7 +53,15 @@ function displayTasks() {
     taskElement.textContent = task.title;
     taskContainer.appendChild(taskElement);
     console.log(taskElement);
-    todoContainer.appendChild(taskContainer);
+    if (task.status === "done") {
+      doneContainer.appendChild(taskContainer);
+    }
+    if (task.status === "todo") {
+      todoContainer.appendChild(taskContainer);
+    }
+    if (task.status === "doing") {
+      doingContainer.appendChild(taskContainer);
+    }
   });
 }
 
