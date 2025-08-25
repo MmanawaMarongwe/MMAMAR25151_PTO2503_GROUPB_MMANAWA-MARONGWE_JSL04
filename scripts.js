@@ -40,3 +40,19 @@ const initialTasks = [
     status: "done",
   },
 ];
+
+const todoContainer = document.getElementById("todo-list");
+
+function displayTasks() {
+  initialTasks.forEach((task) => {
+    const taskContainer = document.createElement("div");
+    taskContainer.className = "task-name";
+    const taskElement = document.createElement("p");
+    taskElement.textContent = task.title;
+    taskContainer.appendChild(taskElement);
+    console.log(taskElement);
+    todoContainer.appendChild(taskContainer);
+  });
+}
+
+displayTasks();
