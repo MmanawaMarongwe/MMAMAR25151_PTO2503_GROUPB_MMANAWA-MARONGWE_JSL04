@@ -45,6 +45,14 @@ const todoContainer = document.getElementById("todo-list");
 const doingContainer = document.getElementById("doing-list");
 const doneContainer = document.getElementById("done-list");
 
+const modal = document.getElementsByClassName("overlay")[0];
+const tasks = document.getElementsByClassName("task-name");
+const modalCloseBtn = document.getElementsByClassName("modal-close")[0];
+
+const modalTitle = document.getElementById("task-name-field");
+const modalDescription = document.getElementById("task-description");
+const modalStatus = document.getElementById("task-status");
+
 function displayTasks() {
   initialTasks.forEach((task) => {
     const taskContainer = document.createElement("div");
@@ -52,6 +60,8 @@ function displayTasks() {
     const taskElement = document.createElement("p");
     taskElement.textContent = task.title;
     taskContainer.appendChild(taskElement);
+    taskContainer.addEventListener("click", () => displayTasksInModal(task));
+
     console.log(taskElement);
     if (task.status === "done") {
       doneContainer.appendChild(taskContainer);
@@ -67,15 +77,17 @@ function displayTasks() {
 
 displayTasks();
 
-const modal = document.getElementsByClassName("overlay")[0];
-const tasks = document.getElementsByClassName("task-name");
-const modalCloseBtn = document.getElementsByClassName("modal-close")[0];
-
-for (let i = 0; i < initialTasks.length; i++) {
+/*for (let i = 0; i < tasks.length; i++) {
   tasks[i].addEventListener("click", () => {
-    console.log(modal);
-    modal.style.display = "flex"; // show the modal
+    modal.style.display = "flex";
   });
+} */
+
+function displayTasksInModal(task) {
+  modalTitle.value = task.title;
+  modalDescription.value = task.description;
+  modalStatus.value = task.status;
+  modal.style.display = "flex";
 }
 
 modalCloseBtn.addEventListener("click", () => {
