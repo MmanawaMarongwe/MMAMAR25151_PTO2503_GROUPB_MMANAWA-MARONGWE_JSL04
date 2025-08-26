@@ -66,3 +66,13 @@ function displayTasks() {
 }
 
 displayTasks();
+
+const modal = document.getElementsByClassName("overlay")[0];
+const tasks = document.getElementsByClassName("task-name");
+
+for (let i = 0; i < initialTasks.length; i++) {
+  tasks[i].addEventListener("click", () => {
+    console.log(modal);
+    modal.style.display = "flex"; // show the modal
+  });
+}
