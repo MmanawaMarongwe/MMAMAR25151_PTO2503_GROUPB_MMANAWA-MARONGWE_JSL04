@@ -69,6 +69,7 @@ displayTasks();
 
 const modal = document.getElementsByClassName("overlay")[0];
 const tasks = document.getElementsByClassName("task-name");
+const modalCloseBtn = document.getElementsByClassName("modal-close")[0];
 
 for (let i = 0; i < initialTasks.length; i++) {
   tasks[i].addEventListener("click", () => {
@@ -76,3 +77,7 @@ for (let i = 0; i < initialTasks.length; i++) {
     modal.style.display = "flex"; // show the modal
   });
 }
+
+modalCloseBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
