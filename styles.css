@@ -14,10 +14,15 @@
 }
 
 h4,
+h3,
 h2,
 p,
 button,
-h1 {
+h1,
+input,
+select,
+label,
+.modal-close {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
@@ -27,11 +32,19 @@ h2 {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-h4 {
+h4,
+label,
+input,
+select {
   font-size: 12px;
   margin-left: 15px;
   color: var(--medium-grey);
   letter-spacing: 3px;
+}
+
+h3,
+input {
+  color: var(--very-dark-grey);
 }
 
 p {
@@ -126,6 +139,61 @@ img {
 
 .btn-primary:hover {
   background-color: var(--hover-purple);
+}
+
+.modal-header,
+input,
+select {
+  margin: 10px 20px 10px 10px;
+}
+
+select {
+  padding: 5px;
+  height: auto; /* natural height for a single-line input */
+  width: 100%; /* make it stretch if you want full width */
+}
+
+option,
+input {
+  text-align: left;
+}
+
+#task-name-modal {
+  padding: 8px 12px; /* comfortable padding inside */
+  height: auto; /* natural height for a single-line input */
+  width: 100%; /* make it stretch if you want full width */
+}
+
+#task-description {
+  margin: 10px 0px 0px 10px;
+  height: 100px; /* natural height for a single-line input */
+  width: 100%; /* make it stretch if you want full width */
+}
+
+.modal-close {
+  float: right;
+  color: var(--red);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0; /* stretch full viewport */
+  background: rgba(0, 0, 0, 0.5); /* dim background */
+  display: none; /* hidden by default */
+  justify-content: center; /* center modal horizontally */
+  align-items: center; /* center modal vertically */
+}
+
+.modal-hidden {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-grey);
+  width: 100%;
+  height: 100%;
+  padding: 10px 30px 30px 10px;
+  top: 0;
+  left: 0;
 }
 
 @media (max-width: 768px) {
