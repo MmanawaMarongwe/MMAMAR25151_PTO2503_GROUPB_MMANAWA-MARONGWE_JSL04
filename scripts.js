@@ -53,35 +53,37 @@ const modalTitle = document.getElementById("task-name-field");
 const modalDescription = document.getElementById("task-description");
 const modalStatus = document.getElementById("task-status");
 
-function displayTasks() {
+function renderTasks() {
   initialTasks.forEach((task) => {
-    const taskContainer = document.createElement("div");
-    taskContainer.className = "task-name";
-    const taskElement = document.createElement("p");
-    taskElement.textContent = task.title;
-    taskContainer.appendChild(taskElement);
-    taskContainer.addEventListener("click", () => displayTasksInModal(task));
-
-    console.log(taskElement);
-    if (task.status === "done") {
-      doneContainer.appendChild(taskContainer);
-    }
-    if (task.status === "todo") {
-      todoContainer.appendChild(taskContainer);
-    }
-    if (task.status === "doing") {
-      doingContainer.appendChild(taskContainer);
-    }
+    const taskElement = createTask(task);
+    arrangeTask(task, taskElement);
+    return taskElement;
   });
 }
+function createTask(task) {
+  const taskContainer = document.createElement("div");
+  taskContainer.className = "task-name";
+  const taskTitle = document.createElement("p");
+  taskTitle.textContent = task.title;
+  taskContainer.appendChild(taskTitle);
+  taskContainer.addEventListener("click", () => displayTasksInModal(task));
 
-displayTasks();
+  return taskContainer;
+}
 
-/*for (let i = 0; i < tasks.length; i++) {
-  tasks[i].addEventListener("click", () => {
-    modal.style.display = "flex";
-  });
-} */
+function arrangeTask(task, taskElement) {
+  if (task.status === "done") {
+    doneContainer.appendChild(taskElement);
+  }
+  if (task.status === "todo") {
+    todoContainer.appendChild(taskElement);
+  }
+  if (task.status === "doing") {
+    doingContainer.appendChild(taskElement);
+  }
+}
+
+renderTasks();
 
 function displayTasksInModal(task) {
   modalTitle.value = task.title;
