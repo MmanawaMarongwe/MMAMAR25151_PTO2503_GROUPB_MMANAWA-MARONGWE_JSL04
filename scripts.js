@@ -41,57 +41,80 @@ const initialTasks = [
   },
 ];
 
-const todoContainer = document.getElementById("todo-list");
-const doingContainer = document.getElementById("doing-list");
-const doneContainer = document.getElementById("done-list");
+const TODO_CONTAINER = document.getElementById("todo-list");
+const DOING_CONTAINER = document.getElementById("doing-list");
+const DONE_CONTAINER = document.getElementById("done-list");
 
-const modal = document.getElementsByClassName("overlay")[0];
-const tasks = document.getElementsByClassName("task-name");
-const modalCloseBtn = document.getElementsByClassName("modal-close")[0];
+const MODAL = document.getElementsByClassName("overlay")[0];
+const TASKS = document.getElementsByClassName("task-name");
+const MODAL_CLOSE_BTN = document.getElementsByClassName("modal-close")[0];
 
-const modalTitle = document.getElementById("task-name-field");
-const modalDescription = document.getElementById("task-description");
-const modalStatus = document.getElementById("task-status");
+const MODAL_TITLE = document.getElementById("task-name-field");
+const MODAL_DESC = document.getElementById("task-description");
+const MODAL_STATUS = document.getElementById("task-status");
 
+/**
+ * Loops through all tasks in the array and renders them on the page
+ * @returns {void}
+ */
 function renderTasks() {
   initialTasks.forEach((task) => {
     const taskElement = createTask(task);
+    console.dir(taskElement);
     arrangeTask(task, taskElement);
     return taskElement;
   });
 }
+
+/**
+ * Creates the task card with a <p> inside showing the title of the task
+ * @param {{title: string}} task - The task object title value
+ * @returns {HTMLDivElement} The task element
+ */
 function createTask(task) {
-  const taskContainer = document.createElement("div");
-  taskContainer.className = "task-name";
+  const taskCard = document.createElement("div");
+  taskCard.className = "task-name";
   const taskTitle = document.createElement("p");
   taskTitle.textContent = task.title;
-  taskContainer.appendChild(taskTitle);
-  taskContainer.addEventListener("click", () => displayTasksInModal(task));
-
-  return taskContainer;
+  taskCard.appendChild(taskTitle);
+  taskCard.addEventListener("click", () => displayTaskInModal(task));
+  return taskCard;
 }
 
+/**
+ * Appends the task element into the correct container according to their status (todo/doing/done)
+ *
+ * @param {{status: string}} task - The task object with status property
+ * @param {HTMLDivElement} taskElement - The created task element
+ * @returns {void}
+ */
 function arrangeTask(task, taskElement) {
   if (task.status === "done") {
-    doneContainer.appendChild(taskElement);
+    DONE_CONTAINER.appendChild(taskElement);
   }
   if (task.status === "todo") {
-    todoContainer.appendChild(taskElement);
+    TODO_CONTAINER.appendChild(taskElement);
   }
   if (task.status === "doing") {
-    doingContainer.appendChild(taskElement);
+    DOING_CONTAINER.appendChild(taskElement);
   }
+}
+
+/**
+ * Shows the task data inside the modal according to their status(todo/doing/done)
+ *
+ * @param {object} task - The task object
+ * @returns {void}
+ */
+function displayTaskInModal(task) {
+  MODAL_TITLE.value = task.title;
+  MODAL_DESC.value = task.description;
+  MODAL_STATUS.value = task.status;
+  MODAL.style.display = "flex";
 }
 
 renderTasks();
 
-function displayTasksInModal(task) {
-  modalTitle.value = task.title;
-  modalDescription.value = task.description;
-  modalStatus.value = task.status;
-  modal.style.display = "flex";
-}
-
-modalCloseBtn.addEventListener("click", () => {
-  modal.style.display = "none";
+MODAL_CLOSE_BTN.addEventListener("click", () => {
+  MODAL.style.display = "none";
 });
