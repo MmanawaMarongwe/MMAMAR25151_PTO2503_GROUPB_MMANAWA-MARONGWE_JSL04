@@ -1,6 +1,6 @@
 # JSL04 Project Brief: Dynamic Task Display & Modal View
 
-## Overview
+## 📽️ Overview
 This project is a simple **Kanban-style task board** built with vanilla JavaScript.  
 Tasks are dynamically created from an initial dataset and displayed in the correct columns ("To Do", "Doing", "Done").  
 Clicking a task opens a **modal** that shows its details (title, description, and status), making it easier to view and potentially update task information.
@@ -9,7 +9,7 @@ The goal was to practice **DOM manipulation**, **event handling**, and **modular
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 - **HTML5** – base structure of the board and modal  
 - **CSS3** – styling for columns, tasks, and modal (responsive design included)  
 - **JavaScript (ES6)** – dynamically rendering tasks, handling events, modal interaction  
@@ -17,28 +17,42 @@ The goal was to practice **DOM manipulation**, **event handling**, and **modular
 
 ---
 
+# 📋 Features
+- ✅ Display tasks dynamically from `initialTasks` array (no hard-coded HTML).  
+- ✅ Tasks are placed in the correct column based on their `status`.  
+- ✅ Each task card shows its **title**.  
+- ✅ Clicking a task opens a **modal**.  
+- ✅ Modal displays:
+  - Task **title** (input field)  
+  - Task **description** (textarea)  
+  - Task **status** (select dropdown, always lowercase)  
+- ✅ Modal can be closed by clicking the **X button**.  
+- ✅ Clean, single-responsibility JavaScript functions with **JSDoc comments**.  
 
-### Dynamic Task Display & Interaction
+---
+## 📂 Setup Instructions
+1. Clone or download this repository.  
+2. Open the project folder on your computer.  
+3. Launch `index.html` in your browser.
+4. Tasks load automatically when the page is opened.
+5. Click on a task card → modal opens with its details.
+6. Close the modal by clicking the X button.
 
-- Dynamically generate **task elements** from the given initial data and insert them into the DOM.
-- Ensure tasks are placed in the **correct columns** ("To Do", "In Progress", "Done") based on their status.
-- Clicking a task should **open a modal** displaying its details.
-- The modal should include:
-  - **Editable input fields** for the task title and description.
-  - **A select dropdown** showing the current status with other status options available.
-  - **A close button** that allows users to exit the modal easily.
+---
 
-### Design & Responsiveness
+### 💻 Code Structure & Maintainability
 
-- Ensure the **modal matches the Figma design**, including a **backdrop effect** for focus.
-- Implement a **fully responsive modal** that works on both desktop and mobile devices.
+- JavaScript functions are small and focused (rendering, creating tasks, arranging tasks, modal display).
+- All major functions include JSDoc comments describing their purpose, parameters, and return values.
+- Variables and functions use descriptive, meaningful names for readability.
 
-### Code Structure & Maintainability
-
-- Structure JavaScript using **modular, single-responsibility functions**.
-- Use **descriptive and meaningful variable and function names** for clarity.
-- Add **JSDoc comments** to major functions, describing their purpose, parameters, and return values for better documentation.
-
+---
 ## Expected Outcome
 
 A fully functional **dynamic task board** where tasks appear under the correct columns, and users can **open a modal to view/edit** task details. The project will follow **clean, well-documented, and maintainable code practices**, ensuring a professional and scalable implementation.
+
+## 🔮 Future Improvements
+- Close modal by clicking the backdrop or pressing the ESC key.
+- Make modal fields editable and persist changes to tasks.
+- Save tasks to localStorage so they remain after refresh.
+- Add support for creating new tasks dynamically.
