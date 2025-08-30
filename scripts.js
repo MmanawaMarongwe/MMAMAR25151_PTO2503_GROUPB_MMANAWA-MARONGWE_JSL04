@@ -53,8 +53,10 @@ const MODAL_TITLE = document.getElementById("task-name-field");
 const MODAL_DESC = document.getElementById("task-description");
 const MODAL_STATUS = document.getElementById("task-status");
 
+let todoCon;
+
 /**
- * Loops through all tasks in the array and renders them on the page
+ * Loops through all task objects in the array and renders them on the page
  * @returns {void}
  */
 function renderTasks() {
