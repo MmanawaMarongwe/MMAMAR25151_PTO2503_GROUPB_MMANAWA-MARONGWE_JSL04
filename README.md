@@ -1,18 +1,22 @@
 # JSL04 Project Brief: Dynamic Task Display & Modal View
 
 ## Overview
+This project is a simple **Kanban-style task board** built with vanilla JavaScript.  
+Tasks are dynamically created from an initial dataset and displayed in the correct columns ("To Do", "Doing", "Done").  
+Clicking a task opens a **modal** that shows its details (title, description, and status), making it easier to view and potentially update task information.
 
-In this project, you will dynamically display tasks from the **given initial data** on the DOM using JavaScript. Tasks should be placed into the correct **Kanban board columns** based on their status, and clicking a task should open a **modal** where users can view and modify task details. The project emphasizes **DOM manipulation, event handling, modular JavaScript structure, and responsive UI implementation.**
+The goal was to practice **DOM manipulation**, **event handling**, and **modular JavaScript structure**, while following a clean and maintainable coding style with **JSDoc documentation**.
 
-## Before You Begin
+---
 
-**Check the project user stories in your student dashboard and the updated Figma Design** before you start building.
+## Technologies Used
+- **HTML5** – base structure of the board and modal  
+- **CSS3** – styling for columns, tasks, and modal (responsive design included)  
+- **JavaScript (ES6)** – dynamically rendering tasks, handling events, modal interaction  
+- **JSDoc** – documenting major functions for clarity and maintainability  
 
-## Figma Design Link
+---
 
-Check the updated Figma Design: [Figma Link](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=0-1&p=f&t=Ki0CZk0RAjrk9Fhs-0)
-
-## Key Objectives
 
 ### Dynamic Task Display & Interaction
 
