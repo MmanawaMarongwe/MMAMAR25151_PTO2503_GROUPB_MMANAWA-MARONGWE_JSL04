@@ -53,8 +53,6 @@ const MODAL_TITLE = document.getElementById("task-name-field");
 const MODAL_DESC = document.getElementById("task-description");
 const MODAL_STATUS = document.getElementById("task-status");
 
-let todoCon;
-
 /**
  * Loops through all task objects in the array and renders them on the page
  * @returns {void}
@@ -105,13 +103,13 @@ function arrangeTask(task, taskElement) {
 /**
  * Shows the task data inside the modal according to their status(todo/doing/done)
  *
- * @param {object} task - The task object
+ * @param {{ title: string, description: string, status:"todo" | "doing" | "done"}} task - The task object
  * @returns {void}
  */
 function displayTaskInModal(task) {
   MODAL_TITLE.value = task.title;
   MODAL_DESC.value = task.description;
-  MODAL_STATUS.value = task.status;
+  MODAL_STATUS.value = task.status.toLowerCase();
   MODAL.style.display = "flex";
 }
 

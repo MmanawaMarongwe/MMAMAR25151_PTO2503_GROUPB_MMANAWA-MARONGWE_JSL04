@@ -151,10 +151,15 @@ select {
   margin: 10px 20px 10px 10px;
 }
 
+textarea {
+  padding: 10px;
+}
+
 select {
   padding: 5px;
   height: auto; /* natural height for a single-line input */
   width: 100%; /* full width */
+  text-transform: lowercase;
 }
 
 option,
