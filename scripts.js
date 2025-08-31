@@ -41,9 +41,9 @@ const initialTasks = [
   },
 ];
 
-const TODO_CONTAINER = document.getElementById("todo-list");
-const DOING_CONTAINER = document.getElementById("doing-list");
-const DONE_CONTAINER = document.getElementById("done-list");
+const TODO_TASKS = document.getElementById("todo-list");
+const DOING_TASKS = document.getElementById("doing-list");
+const DONE_TASKS = document.getElementById("done-list");
 
 const MODAL = document.getElementsByClassName("overlay")[0];
 const TASKS = document.getElementsByClassName("task-name");
@@ -55,21 +55,21 @@ const MODAL_STATUS = document.getElementById("task-status");
 
 /**
  * Loops through all task objects in the array and renders them on the page
- * @returns {void}
+ * @returns {HTMLDivElement} - The created task card
  */
 function renderTasks() {
   initialTasks.forEach((task) => {
-    const taskElement = createTask(task);
-    console.dir(taskElement);
-    arrangeTask(task, taskElement);
-    return taskElement;
+    const taskCard = createTask(task);
+    console.dir(taskCard);
+    arrangeTask(task, taskCard);
+    return taskCard;
   });
 }
 
 /**
  * Creates the task card with a <p> inside showing the title of the task
  * @param {{title: string}} task - The task object title value
- * @returns {HTMLDivElement} The task element
+ * @returns {HTMLDivElement} The created task card
  */
 function createTask(task) {
   const taskCard = document.createElement("div");
@@ -85,25 +85,26 @@ function createTask(task) {
  * Appends the task element into the correct container according to their status (todo/doing/done)
  *
  * @param {{status: string}} task - The task object with status property
- * @param {HTMLDivElement} taskElement - The created task element
+ * @param {HTMLDivElement} taskCard - The created task card
  * @returns {void}
  */
-function arrangeTask(task, taskElement) {
+function arrangeTask(task, taskCard) {
   if (task.status === "done") {
-    DONE_CONTAINER.appendChild(taskElement);
+    DONE_TASKS.appendChild(taskCard);
   }
   if (task.status === "todo") {
-    TODO_CONTAINER.appendChild(taskElement);
+    TODO_TASKS.appendChild(taskCard);
   }
   if (task.status === "doing") {
-    DOING_CONTAINER.appendChild(taskElement);
+    DOING_TASKS.appendChild(taskCard);
   }
 }
 
 /**
- * Shows the task data inside the modal according to their status(todo/doing/done)
+ * Shows the task data inside the modal
  *
- * @param {{ title: string, description: string, status:"todo" | "doing" | "done"}} task - The task object
+ * @param {{ title: string, description: string, status: string }} task
+ *  The task object (status is one of "todo", "doing", "done")
  * @returns {void}
  */
 function displayTaskInModal(task) {
