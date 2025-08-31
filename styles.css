@@ -155,6 +155,10 @@ textarea {
   padding: 10px;
 }
 
+.modal-header {
+  padding: 5px;
+}
+
 select {
   padding: 5px;
   height: auto; /* natural height for a single-line input */
